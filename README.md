@@ -1,18 +1,58 @@
-# React + Vite
+# Multilingual Emotion AI Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack, multi-modal AI application that combines Speech-to-Text translation, Natural Language Processing, and Advanced Audio Emotion Recognition. Users can communicate via text or voice, track emotional intent across speech timelines, translate communications into multiple global languages dynamically, and receive natural voice synthesis output.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 System Architecture Overview
 
-## React Compiler
+The platform uses a decoupled client-server architecture built to process audio and textual streams seamlessly across four core interaction modes:
+* **Speech-to-Speech (S2S):** Audio Input ➔ Transcription & Emotion Analysis ➔ Translation ➔ Audio Synthesis Output.
+* **Speech-to-Text (S2T):** Audio Input ➔ Transcription & Emotion Analysis ➔ Translated Text Output.
+* **Text-to-Speech (T2S):** Typed Input ➔ Translation ➔ Audio Synthesis Output.
+* **Text-to-Text (T2T):** Typed Input ➔ Translated Text Output.
+---
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## 🧠 AI Pipeline & Core Technologies
 
-Note: This will impact Vite dev & build performances.
+### Frontend UI (React & Vite)
+* **React.js (Functional Components + Hooks):** Manages multi-modal states, structural UI rendering, and asynchronous network dispatches.
+* **Web Audio API:** Captures high-fidelity local microphone input and isolates the data stream as raw binary large objects (`Blobs`).
+* **Axios:** Transmits multi-part form data containing audio buffers across local ports to the server.
 
-## Expanding the ESLint configuration
+### Backend Infrastructure (FastAPI & Uvicorn)
+* **FastAPI:** High-performance ASGI web framework running structured request routers, payload processing, and static audio distribution hooks.
+* **Whisper AI (OpenAI):** Robust sequence-to-sequence neural network handling heavy computational transcription tasks.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Hybrid Audio Analytics (CNN-BiLSTM)
+* **Librosa Feature Extraction:** Digitizes incoming waveforms into 40 Mel-Frequency Cepstral Coefficients (MFCCs) to model the audio spectrum over 100 explicit timeframes.
+* **1D Convolutional Neural Network (CNN):** Processes spatial frequencies to identify emotional vocal textures (pitch variations, structural dynamics).
+* **Bidirectional LSTM (Long Short-Term Memory):** Evaluates sequential time context across forwards and backwards data loops to analyze emotional cadence and vocal delivery over time.
+### Language Processing & Vocal Synthesis
+* **Deep Translator Engine:** Free-tier programmatic abstraction routing translated structures across target languages (`EN`, `ES`, `FR`, `DE`, `HI`).
+* **Edge-TTS (Microsoft Azure Neural Voices):** Generates hyper-realistic synthesized voices mapped perfectly to regional dialects.
+
+---
+
+## 🛠️ Installation & Setup
+
+### Prerequisites
+* Python 3.10+
+* Node.js v18+
+* FFmpeg installed and mapped to your system's environment variables (required for audio rendering).
+
+### 1. Backend Configuration
+Navigate to the server directory, isolate your dependencies inside a virtual environment, and initiate your setups:
+
+```bash
+cd backend
+python -m venv myvenv
+
+# Activate Virtual Environment (Windows PowerShell)
+.\myvenv\Scripts\Activate
+
+# Install Dependencies
+pip install -r requirements.txt
+
+# Start the FastAPI Server
+python main.py
