@@ -4,7 +4,7 @@ A full-stack, multi-modal AI application that combines Speech-to-Text translatio
 
 ---
 
-## 🚀 System Architecture Overview
+## System Architecture Overview
 
 The platform uses a decoupled client-server architecture built to process audio and textual streams seamlessly across four core interaction modes:
 * **Speech-to-Speech (S2S):** Audio Input ➔ Transcription & Emotion Analysis ➔ Translation ➔ Audio Synthesis Output.
@@ -13,7 +13,7 @@ The platform uses a decoupled client-server architecture built to process audio 
 * **Text-to-Text (T2T):** Typed Input ➔ Translated Text Output.
 ---
 
-## 🧠 AI Pipeline & Core Technologies
+## AI Pipeline & Core Technologies
 
 ### Frontend UI (React & Vite)
 * **React.js (Functional Components + Hooks):** Manages multi-modal states, structural UI rendering, and asynchronous network dispatches.
@@ -34,7 +34,7 @@ The platform uses a decoupled client-server architecture built to process audio 
 
 ---
 
-## 🛠️ Installation & Setup
+## Installation & Setup
 
 ### Prerequisites
 * Python 3.10+
